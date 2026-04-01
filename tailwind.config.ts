@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+        mono: ['"IBM Plex Mono"', 'monospace'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -57,6 +61,24 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        tribe: {
+          melancholic: "hsl(var(--tribe-melancholic))",
+          euphoric: "hsl(var(--tribe-euphoric))",
+          nostalgic: "hsl(var(--tribe-nostalgic))",
+          hustle: "hsl(var(--tribe-hustle))",
+          thinkers: "hsl(var(--tribe-thinkers))",
+          aesthetic: "hsl(var(--tribe-aesthetic))",
+          dopamine: "hsl(var(--tribe-dopamine))",
+          warriors: "hsl(var(--tribe-warriors))",
+        },
+        bar: {
+          visual: "hsl(var(--bar-visual))",
+          auditory: "hsl(var(--bar-auditory))",
+          emotion: "hsl(var(--bar-emotion))",
+          cognitive: "hsl(var(--bar-cognitive))",
+          reward: "hsl(var(--bar-reward))",
+          social: "hsl(var(--bar-social))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -65,25 +87,32 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        "bar-fill": {
+          from: { width: "0%" },
+          to: { width: "var(--bar-width)" },
+        },
+        "fade-in": {
+          from: { opacity: "0", transform: "translateY(10px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        pulse_glow: {
+          "0%, 100%": { opacity: "0.6" },
+          "50%": { opacity: "1" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "bar-fill": "bar-fill 0.8s ease-out forwards",
+        "fade-in": "fade-in 0.4s ease-out forwards",
+        "pulse-glow": "pulse_glow 2s ease-in-out infinite",
       },
     },
   },
