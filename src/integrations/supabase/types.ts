@@ -14,7 +14,102 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      content_items: {
+        Row: {
+          brain_vector: Json
+          category: string
+          created_at: string
+          creator: string
+          hashtags: string[] | null
+          id: string
+          saves: number
+          shares: number
+          title: string
+          tribe: string
+          views: number
+        }
+        Insert: {
+          brain_vector: Json
+          category: string
+          created_at?: string
+          creator: string
+          hashtags?: string[] | null
+          id?: string
+          saves?: number
+          shares?: number
+          title: string
+          tribe: string
+          views?: number
+        }
+        Update: {
+          brain_vector?: Json
+          category?: string
+          created_at?: string
+          creator?: string
+          hashtags?: string[] | null
+          id?: string
+          saves?: number
+          shares?: number
+          title?: string
+          tribe?: string
+          views?: number
+        }
+        Relationships: []
+      }
+      search_logs: {
+        Row: {
+          created_at: string
+          id: string
+          query_text: string
+          result_ids: string[] | null
+          slider_values: Json
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          query_text?: string
+          result_ids?: string[] | null
+          slider_values: Json
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          query_text?: string
+          result_ids?: string[] | null
+          slider_values?: Json
+        }
+        Relationships: []
+      }
+      tribes: {
+        Row: {
+          cognitive_signature: Json
+          color_hex: string
+          created_at: string
+          description: string
+          growth_rate: number
+          id: string
+          name: string
+        }
+        Insert: {
+          cognitive_signature: Json
+          color_hex: string
+          created_at?: string
+          description: string
+          growth_rate?: number
+          id?: string
+          name: string
+        }
+        Update: {
+          cognitive_signature?: Json
+          color_hex?: string
+          created_at?: string
+          description?: string
+          growth_rate?: number
+          id?: string
+          name?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
