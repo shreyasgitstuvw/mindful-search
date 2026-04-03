@@ -3,6 +3,7 @@ import { SearchSlider } from '@/components/SearchSlider';
 import { ContentCard } from '@/components/ContentCard';
 import { useContentItems, useLogSearch } from '@/hooks/use-content';
 import { searchContent } from '@/lib/search';
+import { useAuth } from '@/hooks/use-auth';
 import { SearchQuery, SearchResult } from '@/lib/types';
 import { motion } from 'framer-motion';
 import { Brain, Search, Sparkles, Loader2 } from 'lucide-react';
