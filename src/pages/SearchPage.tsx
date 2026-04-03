@@ -9,6 +9,7 @@ import { motion } from 'framer-motion';
 import { Brain, Search, Sparkles, Loader2 } from 'lucide-react';
 
 export default function SearchPage() {
+  const { user } = useAuth();
   const { data: allContent, isLoading } = useContentItems();
   const logSearch = useLogSearch();
   const [query, setQuery] = useState<SearchQuery>({
