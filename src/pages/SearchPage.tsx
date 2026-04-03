@@ -24,11 +24,14 @@ export default function SearchPage() {
     if (!allContent) return;
     const res = searchContent(allContent, query);
     setResults(res);
-    logSearch.mutate({
-      query_text: query.text,
-      slider_values: { emotional_tone: query.emotional_tone, intensity: query.intensity, reward_loop: query.reward_loop },
-      result_ids: res.map(r => r.id),
-    });
+    if (user) {
+      logSearch.mutate({
+        query_text: query.text,
+        slider_values: { emotional_tone: query.emotional_tone, intensity: query.intensity, reward_loop: query.reward_loop },
+        result_ids: res.map(r => r.id),
+        user_id: user.id,
+      });
+    }
   };
 
   return (
