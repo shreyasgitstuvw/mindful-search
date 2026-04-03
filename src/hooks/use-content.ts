@@ -88,11 +88,13 @@ export function useLogSearch() {
       query_text: string;
       slider_values: { emotional_tone: number; intensity: number; reward_loop: number };
       result_ids: string[];
+      user_id: string;
     }) => {
       const { error } = await supabase.from('search_logs').insert({
         query_text: log.query_text,
         slider_values: log.slider_values as any,
         result_ids: log.result_ids,
+        user_id: log.user_id,
       });
       if (error) throw error;
     },

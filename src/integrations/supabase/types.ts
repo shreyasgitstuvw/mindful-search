@@ -63,6 +63,7 @@ export type Database = {
           query_text: string
           result_ids: string[] | null
           slider_values: Json
+          user_id: string | null
         }
         Insert: {
           created_at?: string
@@ -70,6 +71,7 @@ export type Database = {
           query_text?: string
           result_ids?: string[] | null
           slider_values: Json
+          user_id?: string | null
         }
         Update: {
           created_at?: string
@@ -77,6 +79,7 @@ export type Database = {
           query_text?: string
           result_ids?: string[] | null
           slider_values?: Json
+          user_id?: string | null
         }
         Relationships: []
       }

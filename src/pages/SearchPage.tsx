@@ -3,11 +3,13 @@ import { SearchSlider } from '@/components/SearchSlider';
 import { ContentCard } from '@/components/ContentCard';
 import { useContentItems, useLogSearch } from '@/hooks/use-content';
 import { searchContent } from '@/lib/search';
+import { useAuth } from '@/hooks/use-auth';
 import { SearchQuery, SearchResult } from '@/lib/types';
 import { motion } from 'framer-motion';
 import { Brain, Search, Sparkles, Loader2 } from 'lucide-react';
 
 export default function SearchPage() {
+  const { user } = useAuth();
   const { data: allContent, isLoading } = useContentItems();
   const logSearch = useLogSearch();
   const [query, setQuery] = useState<SearchQuery>({
@@ -22,11 +24,14 @@ export default function SearchPage() {
     if (!allContent) return;
     const res = searchContent(allContent, query);
     setResults(res);
-    logSearch.mutate({
-      query_text: query.text,
-      slider_values: { emotional_tone: query.emotional_tone, intensity: query.intensity, reward_loop: query.reward_loop },
-      result_ids: res.map(r => r.id),
-    });
+    if (user) {
+      logSearch.mutate({
+        query_text: query.text,
+        slider_values: { emotional_tone: query.emotional_tone, intensity: query.intensity, reward_loop: query.reward_loop },
+        result_ids: res.map(r => r.id),
+        user_id: user.id,
+      });
+    }
   };
 
   return (
